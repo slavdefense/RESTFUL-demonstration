@@ -1,3 +1,4 @@
+const { text } = require("express");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -14,7 +15,18 @@ const intro = [
 ];
 
 app.get("/comments", (req, res) => {
-  res.render("index", { intro });
+  res.render("comments/index", { intro });
+});
+
+app.get("/comments/new", (req, res) => {
+  res.render("comments/new");
+});
+
+app.post("/comments", (req, res) => {
+  console.log(req.body);
+
+  const { username, comment } = req.body;
+  intro.push({ username: username, comment: comment });
 });
 
 app.listen(3000, (req, res) => {
