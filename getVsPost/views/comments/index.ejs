@@ -10,8 +10,12 @@
     <h1>General Introductions</h1>
     <ul>
       <% for(item of intro){ %>
-      <li><%= item.comment %> - <b><%= item.username %> </b></li>
+      <li>
+        Id:<%= item.id %>--<%= item.comment %> -- <b><%= item.username %> </b>
+        <a href="/comments/<%= item.id %> ">Details</a>
+      </li>
       <% } %>
     </ul>
+    <a href="/comments/new">add a comment</a>
   </body>
 </html>
