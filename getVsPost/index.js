@@ -32,6 +32,17 @@ app.get("/comments/:id", (req, res) => {
   console.log(user);
 });
 
+app.patch("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const newComment = req.body.comment;
+
+  const foundComment = intro.find((element) => {
+    return element.id === id;
+  });
+  foundComment.comment = newComment;
+  res.redirect("/comments");
+});
+
 app.post("/comments", (req, res) => {
   console.log(req.body);
 
